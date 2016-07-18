@@ -2,7 +2,8 @@ var express = require('express');
 var app = express();
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize('pokemons', null, null, {
-	dialect: 'sqlite'
+	dialect: 'sqlite',
+	storage: './database.sqlite'
 });
 var bodyParser = require('body-parser');
 var request = require('request-promise');
@@ -95,5 +96,3 @@ app.post('/buy-pokemons', function (req, res) {
 	})
 
 });
-
-
