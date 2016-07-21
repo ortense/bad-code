@@ -1,10 +1,10 @@
 {
   "name": "pagarme-bad-code",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Example of a really bad code",
-  "main": "index.js",
+  "main": "./bin/www",
   "scripts": {
-    "dev": "nodemon ./index.js",
+    "dev": "nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
