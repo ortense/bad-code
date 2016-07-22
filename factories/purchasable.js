@@ -16,8 +16,12 @@ const purchaseble = Model => ({
             req.body.price = product.price
             req.body.productName = Model.name
 
+            // req.body.product.price = product.price
+            // req.body.product.productName = Model.name
+            // payment(req.body)
+            
             payment({
-                buyer: { // Esses dados deveriam estar no request ...
+                buyer: {
                     card_number: '4024007138010896',
                     card_expiration_date: '1050',
                     card_holder_name: 'Ash Ketchum',
