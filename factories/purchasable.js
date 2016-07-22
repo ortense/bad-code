@@ -4,35 +4,27 @@ const payment     = require('../services/payment-gateway')
 const purchaseble = Model => ({
     buy: (req, res) => {
         Model.findOne({
-            where: { name: req.body.name }
+            where: { name: req.body.product.name }
         })
         .then(product => {
-            if (product.stock < req.body.quantity) {
+            if (!product){
+                return res.status(400).json({
+                    error: `Product ${req.body.product.name} not found in stock`
+                })
+            }
+            else if (product.stock < req.body.product.quantity) {
                 return res.status(400).json({
                     error: `Not enought ${product.name} in stock: ${product.stock}`
                 })
             }
 
-            req.body.price = product.price
-            req.body.productName = Model.name
+            req.body.product.price = product.price
+            req.body.product.productName = Model.name
 
-            // req.body.product.price = product.price
-            // req.body.product.productName = Model.name
-            // payment(req.body)
-            
-            payment({
-                buyer: {
-                    card_number: '4024007138010896',
-                    card_expiration_date: '1050',
-                    card_holder_name: 'Ash Ketchum',
-                    card_cvv: '123'
-                },
-                product: req.body
-            })
-            .then(body => {
+            payment(req.body).then(body => {
                 if (body.status === 'paid') {
 
-                    product.stock = product.stock - req.body.quantity;
+                    product.stock = product.stock - req.body.product.quantity;
                     product.save()
                         .then(product => res.json(body))
                 }

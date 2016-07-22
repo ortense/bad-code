@@ -5,32 +5,32 @@ const controller = require('../controllers/pokemon')
 const routes  = [
     {
         method: 'get',
-        path: '/get-pokemons', // '/pokemon'
+        path: '/',
         handler: controller.retrieve
     },
     {
         method: 'get',
-        path: '/get-pokemon/:id',
+        path: '/:id',
         handler: controller.get
     },
     {
-        method: 'put', // 'post'
-        path: '/create-pokemons', // '/pokemon'
+        method: 'post',
+        path: '/',
         handler: controller.create
     },
     {
         method: 'put',
-        path: '/update-pokemon/:id', // '/pokemon/:id'
+        path: '/:id',
         handler: controller.update
     },
     {
         method: 'post',
-        path: '/buy-pokemons', // 'pokemon/buy'
+        path: '/buy',
         handler: controller.buy
     },
     {
         method: 'delete',
-        path: '/delete-pokemon/:id', // '/pokemon/:id'
+        path: '/:id',
         handler: controller.delete
     }
 ]
