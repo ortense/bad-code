@@ -1,1 +1,1 @@
-# Bad code
+# Good code :)

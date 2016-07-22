@@ -1,21 +1,37 @@
 'use strict';
 
-const pokemonController = require('../controllers/pokemon')
+const controller = require('../controllers/pokemon')
+
 const routes  = [
     {
         method: 'get',
         path: '/get-pokemons',
-        handler: pokemonController.get
+        handler: controller.retrieve
+    },
+    {
+        method: 'get',
+        path: '/get-pokemon/:id',
+        handler: controller.get
+    },
+    {
+        method: 'put', //Seria melhor usar post
+        path: '/create-pokemons',
+        handler: controller.create
     },
     {
         method: 'put',
-        path: '/create-pokemons',
-        handler: pokemonController.create
+        path: '/update-pokemon/:id',
+        handler: controller.update
     },
     {
         method: 'post',
         path: '/buy-pokemons',
-        handler: pokemonController.buy
+        handler: controller.buy
+    },
+    {
+        method: 'delete',
+        path: '/delete-pokemon/:id',
+        handler: controller.delete
     }
 ]
 

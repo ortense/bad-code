@@ -4,6 +4,7 @@
   "description": "Example of a really bad code",
   "main": "./bin/www",
   "scripts": {
+    "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

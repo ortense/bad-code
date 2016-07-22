@@ -4,9 +4,12 @@ const fs        = require('fs')
 const path      = require('path')
 const Sequelize = require('sequelize')
 const env       = process.env.NODE_ENV || 'development'
-const config    = require('../config/config.json').db[env]
-const sequelize = new Sequelize(config)
-const db        = {};
+const dbuser    = process.env.DBUSER
+const dbpass    = process.env.DBPASS
+const dbname    = process.env.DBNAME
+const dbconfig  = require('../config/config.json').db[env]
+const sequelize = new Sequelize(dbname, dbuser, dbpass, dbconfig)
+const db        = {}
 
 fs.readdirSync(__dirname)
     .filter(file =>
@@ -19,7 +22,7 @@ fs.readdirSync(__dirname)
 Object.keys(db)
     .forEach(modelName => {
         if ('associate' in db[modelName]) {
-            db[modelName].associate(db);
+            db[modelName].associate(db)
         }
     })
 

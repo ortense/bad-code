@@ -4,7 +4,14 @@
             "dialect": "sqlite",
             "storage": "./database.sqlite"
         },
-        "test": {},
-        "production": {}
+        "test": {
+            "host": "localhost",
+            "dialect": "postgres"
+        },
+        "production": {
+            "host": "dbhost",
+            "dialect": "postgres",
+            "logging": false
+        }
     }
 }
